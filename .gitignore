@@ -1,0 +1,27 @@
+# Virtual Environments
+venv/
+env/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Configuration and Credentials (CRITICAL TO IGNORE)
+config.json
+firebase_credentials.json
+
+# Local Data and Outputs
+applications.xlsx
+*.pdf
+*.png
+
+# Node / Frontend
+web-dashboard/node_modules/
+web-dashboard/dist/
+web-dashboard/.eslintcache
+
+# OS
+.DS_Store
+Thumbs.db

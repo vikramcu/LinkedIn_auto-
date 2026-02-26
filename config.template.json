@@ -1,0 +1,22 @@
+{
+    "linkedin": {
+        "email": "www.vikramvh.11@gmail.com",
+        "password": "vikramv123",
+        "session_cookie": "AQEDAThSVEgEb9xWAAABnJhaGgIAAAGcvGaeAlYAg-rTuWYlBdzhJcyzEzJMI7cgOw6IKRfrP-DR_biQpbRRSwCTrSA1v1ovNGxg2yLwYIuGVYo5PNnd70HPlqXHmubOznRVID-LYUkLwdPukF7g5d1E"
+    },
+    "gemini": {
+        "api_key": "AIzaSyB_w7avYAvrewsPiz7UrBc9aUZhzk_u-KI"
+    },
+    "search": {
+        "keywords": [
+            "Java",
+            "Spring",
+            "SQL"
+        ],
+        "location": "Remote",
+        "daily_application_limit": 100
+    },
+    "resume": {
+        "base_pdf_path": "VIKRAM-M-FlowCV-Resume-20260223.pdf"
+    }
+}
