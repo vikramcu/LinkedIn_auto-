@@ -1,5 +1,6 @@
 import time
 import urllib.parse
+import re
 from playwright.sync_api import sync_playwright
 
 class LinkedInBot:
@@ -307,6 +308,46 @@ class LinkedInBot:
                     input_field.fill("350000")
                 elif "notice" in label_text or "join" in label_text:
                     input_field.fill("0")
+
+            # Handle radio button questions (e.g. Yes/No) and select "Yes"
+            fieldsets = page.locator("fieldset").all()
+            for fieldset in fieldsets:
+                if not fieldset.is_visible():
+                    continue
+                
+                # Check if an option is already selected
+                if fieldset.locator("input[type='radio']:checked").count() > 0:
+                    continue
+                
+                # Look for a 'Yes' option and click it
+                yes_option = fieldset.locator("label", has_text=re.compile(r'(?i)^\s*Yes\s*$')).first
+                if yes_option.count() == 0:
+                    yes_option = fieldset.locator("label:has-text('Yes'), label:has-text('yes')").first
+
+                if yes_option.count() > 0:
+                    try:
+                        yes_option.click(force=True)
+                        time.sleep(0.5)
+                    except Exception:
+                        pass
+
+            # Handle select dropdowns
+            selects = page.locator("select").all()
+            for select in selects:
+                if not select.is_visible():
+                    continue
+                
+                # Try to select the 'Yes' option if available
+                options = select.locator("option").all()
+                for opt in options:
+                    if opt.inner_text().strip().lower() == "yes":
+                        try:
+                            select.select_option(value=opt.get_attribute("value"))
+                            time.sleep(0.5)
+                        except Exception:
+                            pass
+                        break
+
         except Exception as e:
             print(f"Error filling questions: {e}")
 
